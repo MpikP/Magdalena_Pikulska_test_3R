@@ -1,9 +1,9 @@
 package pl.kurs.magdalena_pikulska_test_3r.dto;
 
-public class StatusDao {
+public class StatusDto {
     private String status;
 
-    public StatusDao(String status) {
+    public StatusDto(String status) {
         this.status = status;
     }
 

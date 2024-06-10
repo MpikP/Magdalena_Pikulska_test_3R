@@ -2,7 +2,7 @@ package pl.kurs.magdalena_pikulska_test_3r.dto;
 
 import java.sql.Timestamp;
 
-public class RectangleDao implements FigureDao {
+public class RectangleDto implements FigureDto {
     private Long id;
     private Timestamp createdTime;
     private Double length;
@@ -17,6 +17,8 @@ public class RectangleDao implements FigureDao {
     public void setId(Long id) {
         this.id = id;
     }
+
+
 
     public Timestamp getCreatedTime() {
         return createdTime;

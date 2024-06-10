@@ -1,14 +1,14 @@
 package pl.kurs.magdalena_pikulska_test_3r.dto;
 
 
-public class ShapeDao{
+public class ShapeDto {
     private String type;
-    private FigureDao parameters;
+    private FigureDto parameters;
 
-    public ShapeDao() {
+    public ShapeDto() {
     }
 
-    public ShapeDao(String type, FigureDao parameters) {
+    public ShapeDto(String type, FigureDto parameters) {
         this.type = type;
         this.parameters = parameters;
     }
@@ -21,11 +21,11 @@ public class ShapeDao{
         this.type = type;
     }
 
-    public FigureDao getParameters() {
+    public FigureDto getParameters() {
         return parameters;
     }
 
-    public void setParameters(FigureDao parameters) {
+    public void setParameters(FigureDto parameters) {
         this.parameters = parameters;
     }
 }

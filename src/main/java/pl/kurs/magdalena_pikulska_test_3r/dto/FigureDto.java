@@ -5,9 +5,9 @@ import pl.kurs.magdalena_pikulska_test_3r.models.Rectangle;
 import pl.kurs.magdalena_pikulska_test_3r.models.Square;
 import pl.kurs.magdalena_pikulska_test_3r.models.Triangle;
 
-public interface FigureDao {
-    static CircleDao createCircleDao(Circle circle){
-        CircleDao circleDao = new CircleDao();
+public interface FigureDto {
+    static CircleDto createCircleDto(Circle circle){
+        CircleDto circleDao = new CircleDto();
         circleDao.setCreatedTime(circle.getCreatedTime());
         circleDao.setId(circle.getId());
         circleDao.setRadius(circle.getRadius());
@@ -15,8 +15,8 @@ public interface FigureDao {
         circleDao.setPerimeter(circle.calculatePerimeter());
         return circleDao;
     }
-    static SquareDao createSquareDao(Square square){
-        SquareDao squareDao = new SquareDao();
+    static SquareDto createSquareDto(Square square){
+        SquareDto squareDao = new SquareDto();
         squareDao.setCreatedTime(square.getCreatedTime());
         squareDao.setId(square.getId());
         squareDao.setLength(square.getLength());
@@ -24,8 +24,8 @@ public interface FigureDao {
         squareDao.setPerimeter(square.calculatePerimeter());
         return squareDao;
     }
-    static RectangleDao createRectangleDao(Rectangle rectangle){
-        RectangleDao rectangleDao = new RectangleDao();
+    static RectangleDto createRectangleDto(Rectangle rectangle){
+        RectangleDto rectangleDao = new RectangleDto();
         rectangleDao.setCreatedTime(rectangle.getCreatedTime());
         rectangleDao.setId(rectangle.getId());
         rectangleDao.setLength(rectangle.getLength());
@@ -34,8 +34,8 @@ public interface FigureDao {
         rectangleDao.setPerimeter(rectangle.calculatePerimeter());
         return rectangleDao;
     }
-    static TriangleDao createTriangleDao(Triangle triangle){
-        TriangleDao triangleDao = new TriangleDao();
+    static TriangleDto createTriangleDto(Triangle triangle){
+        TriangleDto triangleDao = new TriangleDto();
         triangleDao.setCreatedTime(triangle.getCreatedTime());
         triangleDao.setId(triangle.getId());
         triangleDao.setLengthBase(triangle.getLengthBase());

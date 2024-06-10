@@ -2,10 +2,13 @@ package pl.kurs.magdalena_pikulska_test_3r.dto;
 
 import java.sql.Timestamp;
 
-public class SquareDao implements FigureDao {
+public class TriangleDto implements FigureDto {
     private Long id;
     private Timestamp createdTime;
-    private Double length;
+    private Double lengthBase;
+    private Double lengthA;
+    private Double lengthB;
+    private Double height;
     private Double area;
     private Double perimeter;
 
@@ -25,12 +28,36 @@ public class SquareDao implements FigureDao {
         this.createdTime = createdTime;
     }
 
-    public Double getLength() {
-        return length;
+    public Double getLengthBase() {
+        return lengthBase;
     }
 
-    public void setLength(Double length) {
-        this.length = length;
+    public void setLengthBase(Double lengthBase) {
+        this.lengthBase = lengthBase;
+    }
+
+    public Double getLengthA() {
+        return lengthA;
+    }
+
+    public void setLengthA(Double lengthA) {
+        this.lengthA = lengthA;
+    }
+
+    public Double getLengthB() {
+        return lengthB;
+    }
+
+    public void setLengthB(Double lengthB) {
+        this.lengthB = lengthB;
+    }
+
+    public Double getHeight() {
+        return height;
+    }
+
+    public void setHeight(Double height) {
+        this.height = height;
     }
 
     public Double getArea() {
