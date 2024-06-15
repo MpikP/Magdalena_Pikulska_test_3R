@@ -41,14 +41,4 @@ public class Square extends Shape implements Figure{
     public int hashCode() {
         return Objects.hash(super.hashCode(), length);
     }
-
-    @Override
-    public Double calculateArea() {
-        return length * length;
-    }
-
-    @Override
-    public Double calculatePerimeter() {
-        return 4 * length;
-    }
 }

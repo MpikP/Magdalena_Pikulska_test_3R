@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class SquareService extends GenericManagementService<Square, SquareRepository>{
+public class SquareService extends GenericManagementService<Square, SquareRepository> implements FigureService<Square>{
     public SquareService(SquareRepository repository) {
         super(repository);
     }
@@ -20,5 +20,15 @@ public class SquareService extends GenericManagementService<Square, SquareReposi
         }
         return repository.save(c);
 
+    }
+
+    @Override
+    public Double calculateArea(Square shape) {
+        return shape.getLength() * shape.getLength();
+    }
+
+    @Override
+    public Double calculatePerimeter(Square shape) {
+        return 4.0 * shape.getLength();
     }
 }

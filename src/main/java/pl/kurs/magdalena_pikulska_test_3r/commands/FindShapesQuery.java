@@ -1,17 +1,15 @@
 package pl.kurs.magdalena_pikulska_test_3r.commands;
 
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.format.annotation.DateTimeFormat;
-import pl.kurs.magdalena_pikulska_test_3r.validators.ShapeType;
+import pl.kurs.magdalena_pikulska_test_3r.validators.ParametersToFind;
 import pl.kurs.magdalena_pikulska_test_3r.validators.ShapeTypeToFind;
 
 import java.time.LocalDate;
 
+@ParametersToFind
 public class FindShapesQuery {
     @ShapeTypeToFind
     private String type;

@@ -1,13 +1,17 @@
 package pl.kurs.magdalena_pikulska_test_3r.dto;
 
-import java.sql.Timestamp;
 
-public class SquareDto implements FigureDto {
+public class SquareDto extends ShapeDto {
     private Long id;
-    private Timestamp createdTime;
     private Double length;
-    private Double area;
-    private Double perimeter;
+
+    public SquareDto() {
+        super("Square");
+    }
+
+    public SquareDto(String type) {
+        super(type);
+    }
 
     public Long getId() {
         return id;
@@ -17,35 +21,11 @@ public class SquareDto implements FigureDto {
         this.id = id;
     }
 
-    public Timestamp getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(Timestamp createdTime) {
-        this.createdTime = createdTime;
-    }
-
     public Double getLength() {
         return length;
     }
 
     public void setLength(Double length) {
         this.length = length;
-    }
-
-    public Double getArea() {
-        return area;
-    }
-
-    public void setArea(Double area) {
-        this.area = area;
-    }
-
-    public Double getPerimeter() {
-        return perimeter;
-    }
-
-    public void setPerimeter(Double perimeter) {
-        this.perimeter = perimeter;
     }
 }

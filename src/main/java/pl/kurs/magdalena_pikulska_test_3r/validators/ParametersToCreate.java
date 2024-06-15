@@ -7,11 +7,11 @@ import java.lang.annotation.*;
 
 @Documented
 @Constraint(
-        validatedBy = {ParametersValidator.class}
+        validatedBy = {ParametersToCreateValidator.class}
 )
 @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Parameters {
+public @interface ParametersToCreate {
     String message() default "Field: Parameters / message: Invalid parameters.";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};

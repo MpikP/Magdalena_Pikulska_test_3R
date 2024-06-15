@@ -1,16 +1,16 @@
 package pl.kurs.magdalena_pikulska_test_3r.dto;
 
+import java.sql.Timestamp;
 
-public class ShapeDto {
+public abstract class ShapeDto {
     private String type;
-    private FigureDto parameters;
+    private Long id;
+    private Timestamp createdTime;
+    private Double area;
+    private Double perimeter;
 
-    public ShapeDto() {
-    }
-
-    public ShapeDto(String type, FigureDto parameters) {
+    public ShapeDto(String type) {
         this.type = type;
-        this.parameters = parameters;
     }
 
     public String getType() {
@@ -21,11 +21,35 @@ public class ShapeDto {
         this.type = type;
     }
 
-    public FigureDto getParameters() {
-        return parameters;
+    public Long getId() {
+        return id;
     }
 
-    public void setParameters(FigureDto parameters) {
-        this.parameters = parameters;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Timestamp getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Timestamp createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public Double getArea() {
+        return area;
+    }
+
+    public void setArea(Double area) {
+        this.area = area;
+    }
+
+    public Double getPerimeter() {
+        return perimeter;
+    }
+
+    public void setPerimeter(Double perimeter) {
+        this.perimeter = perimeter;
     }
 }

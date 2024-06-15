@@ -1,17 +1,13 @@
 package pl.kurs.magdalena_pikulska_test_3r.services;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import pl.kurs.magdalena_pikulska_test_3r.exceptions.WrongEntityStateException;
 import pl.kurs.magdalena_pikulska_test_3r.models.Circle;
 import pl.kurs.magdalena_pikulska_test_3r.repositories.CircleRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
-public class CircleService extends GenericManagementService<Circle, CircleRepository>{
+public class CircleService extends GenericManagementService<Circle, CircleRepository> implements FigureService<Circle> {
 
     public CircleService(CircleRepository repository) {
         super(repository);
@@ -26,6 +22,13 @@ public class CircleService extends GenericManagementService<Circle, CircleReposi
 
     }
 
+    @Override
+    public Double calculateArea(Circle shape) {
+        return shape.getRadius() * shape.getRadius() * FigureService.PI_NUMBER;
+    }
 
-
+    @Override
+    public Double calculatePerimeter(Circle shape) {
+        return 2.0 * shape.getRadius() * FigureService.PI_NUMBER;
+    }
 }

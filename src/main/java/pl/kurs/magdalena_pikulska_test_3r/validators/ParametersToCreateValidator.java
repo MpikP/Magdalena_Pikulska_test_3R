@@ -4,9 +4,9 @@ import pl.kurs.magdalena_pikulska_test_3r.commands.CreateShapeCommand;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-public class ParametersValidator implements ConstraintValidator<Parameters, CreateShapeCommand> {
+public class ParametersToCreateValidator implements ConstraintValidator<ParametersToCreate, CreateShapeCommand> {
     @Override
-    public void initialize(Parameters constraintAnnotation) {
+    public void initialize(ParametersToCreate constraintAnnotation) {
         ConstraintValidator.super.initialize(constraintAnnotation);
     }
 
@@ -15,27 +15,23 @@ public class ParametersValidator implements ConstraintValidator<Parameters, Crea
         if (command == null)
             return false;
 
-        if(command.getParameters() == null)
-            return false;
-
         String shapeType = command.getType();
-        pl.kurs.magdalena_pikulska_test_3r.commands.Parameters parameters = command.getParameters();
 
         switch (shapeType){
             case "circle":
-                if(parameters.getRadius() == null )
+                if(command.getRadius() == null )
                     return false;
                 break;
             case "square":
-                if(parameters.getLength() == null)
+                if(command.getLength() == null)
                     return false;
                 break;
             case "rectangle":
-                if(parameters.getLength() == null || parameters.getHeight() == null)
+                if(command.getLength() == null || command.getHeight() == null)
                     return false;
                 break;
             case "triangle":
-                if(parameters.getLengthA() == null || parameters.getLengthB() == null || parameters.getLengthBase() == null || parameters.getHeight() == null)
+                if(command.getLengthA() == null || command.getLengthB() == null || command.getLengthBase() == null || command.getHeight() == null)
                     return false;
                 break;
         }

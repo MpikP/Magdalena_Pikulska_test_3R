@@ -73,13 +73,5 @@ public class Triangle extends Shape implements Figure{
         return Objects.hash(super.hashCode(), lengthBase, lengthA, lengthB, height);
     }
 
-    @Override
-    public Double calculateArea() {
-        return lengthBase * height / 3;
-    }
 
-    @Override
-    public Double calculatePerimeter() {
-        return lengthBase + lengthA + lengthB;
-    }
 }

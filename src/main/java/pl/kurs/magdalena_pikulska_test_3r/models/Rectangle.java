@@ -52,14 +52,4 @@ public class Rectangle extends Shape implements Figure{
     public int hashCode() {
         return Objects.hash(super.hashCode(), length, height);
     }
-
-    @Override
-    public Double calculateArea() {
-        return length * height;
-    }
-
-    @Override
-    public Double calculatePerimeter() {
-        return 2 * (length + height);
-    }
 }

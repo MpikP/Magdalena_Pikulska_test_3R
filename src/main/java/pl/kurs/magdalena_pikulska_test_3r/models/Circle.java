@@ -47,15 +47,6 @@ public class Circle extends Shape implements Figure{
         return Objects.hash(super.hashCode(), radius);
     }
 
-    @Override
-    public Double calculateArea() {
-        return PI_NUMBER * radius * radius;
-    }
-
-    @Override
-    public Double calculatePerimeter() {
-        return  2 * PI_NUMBER * radius;
-    }
 
 }
 

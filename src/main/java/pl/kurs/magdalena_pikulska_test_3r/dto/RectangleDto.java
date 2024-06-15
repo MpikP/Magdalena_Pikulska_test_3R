@@ -1,32 +1,18 @@
 package pl.kurs.magdalena_pikulska_test_3r.dto;
 
-import java.sql.Timestamp;
 
-public class RectangleDto implements FigureDto {
-    private Long id;
-    private Timestamp createdTime;
+public class RectangleDto extends ShapeDto {
     private Double length;
     private Double height;
-    private Double area;
-    private Double perimeter;
 
-    public Long getId() {
-        return id;
+    public RectangleDto() {
+        super("Rectangle");
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public RectangleDto(String type) {
+        super(type);
     }
 
-
-
-    public Timestamp getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(Timestamp createdTime) {
-        this.createdTime = createdTime;
-    }
 
     public Double getLength() {
         return length;
@@ -42,21 +28,5 @@ public class RectangleDto implements FigureDto {
 
     public void setHeight(Double height) {
         this.height = height;
-    }
-
-    public Double getArea() {
-        return area;
-    }
-
-    public void setArea(Double area) {
-        this.area = area;
-    }
-
-    public Double getPerimeter() {
-        return perimeter;
-    }
-
-    public void setPerimeter(Double perimeter) {
-        this.perimeter = perimeter;
     }
 }
