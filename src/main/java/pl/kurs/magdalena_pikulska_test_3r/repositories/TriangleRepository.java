@@ -1,9 +1,7 @@
 package pl.kurs.magdalena_pikulska_test_3r.repositories;
 
-import org.springframework.stereotype.Repository;
-import pl.kurs.magdalena_pikulska_test_3r.models.Triangle;
 import org.springframework.data.jpa.repository.JpaRepository;
+import pl.kurs.magdalena_pikulska_test_3r.models.Triangle;
 
-@Repository
 public interface TriangleRepository extends JpaRepository<Triangle, Long> {
 }

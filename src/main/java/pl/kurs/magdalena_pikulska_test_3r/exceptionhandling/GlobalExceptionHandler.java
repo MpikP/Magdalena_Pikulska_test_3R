@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
                 .map(fe -> "Field: " + fe.getField() + " / rejected value: '" + fe.getRejectedValue() + "' / message: " + fe.getDefaultMessage())
                 .collect(Collectors.toList());
 
-        if(errorsMessages.isEmpty()) {
+        if (errorsMessages.isEmpty()) {
             errorsMessages = e.getBindingResult().getAllErrors().stream()
                     .map(x -> x.getDefaultMessage())
                     .collect(Collectors.toList());
@@ -40,7 +40,7 @@ public class GlobalExceptionHandler {
 
 
     @ExceptionHandler(WrongEntityStateException.class)
-    public ResponseEntity<ExceptionResponseBodyDto> handleWrongEntityStateException(WrongEntityStateException e){
+    public ResponseEntity<ExceptionResponseBodyDto> handleWrongEntityStateException(WrongEntityStateException e) {
         ExceptionResponseBodyDto exceptionResponseBodyDto = new ExceptionResponseBodyDto(
                 List.of(e.getMessage()),
                 "BAD_REQUEST",
@@ -50,7 +50,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ExceptionResponseBodyDto> handleResourceNotFoundException(ResourceNotFoundException e){
+    public ResponseEntity<ExceptionResponseBodyDto> handleResourceNotFoundException(ResourceNotFoundException e) {
         ExceptionResponseBodyDto exceptionResponseBodyDto = new ExceptionResponseBodyDto(
                 List.of(e.getMessage()),
                 "NOT_FOUND",

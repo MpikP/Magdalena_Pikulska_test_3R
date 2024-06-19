@@ -17,21 +17,21 @@ public class ParametersToCreateValidator implements ConstraintValidator<Paramete
 
         String shapeType = command.getType();
 
-        switch (shapeType){
+        switch (shapeType) {
             case "circle":
-                if(command.getRadius() == null )
+                if (command.getRadius() == null)
                     return false;
                 break;
             case "square":
-                if(command.getLength() == null)
+                if (command.getLength() == null)
                     return false;
                 break;
             case "rectangle":
-                if(command.getLength() == null || command.getHeight() == null)
+                if (command.getLength() == null || command.getHeight() == null)
                     return false;
                 break;
             case "triangle":
-                if(command.getLengthA() == null || command.getLengthB() == null || command.getLengthBase() == null || command.getHeight() == null)
+                if (command.getLengthA() == null || command.getLengthB() == null || command.getLengthBase() == null || command.getHeight() == null)
                     return false;
                 break;
         }

@@ -6,37 +6,52 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "rectangles")
-public class Rectangle extends Shape implements Figure{
+public class Rectangle extends Shape {
     private static final long serialVersionUID = 1L;
 
     @Column(nullable = false)
-    private Double length;
+    private Double lengthRectangle;
     @Column(nullable = false)
-    private Double height;
+    private Double heightRectangle;
 
     public Rectangle() {
     }
 
     public Rectangle(Double length, Double height) {
         super();
-        this.length = length;
-        this.height = height;
+        this.lengthRectangle = length;
+        this.heightRectangle = height;
     }
 
-    public Double getLength() {
-        return length;
+    public Double getLengthRectangle() {
+        return lengthRectangle;
     }
 
-    public void setLength(Double length) {
-        this.length = length;
+    public void setLengthRectangle(Double lengthRectangle) {
+        this.lengthRectangle = lengthRectangle;
     }
 
-    public Double getHeight() {
-        return height;
+    public Double getHeightRectangle() {
+        return heightRectangle;
     }
 
-    public void setHeight(Double height) {
-        this.height = height;
+    public void setHeightRectangle(Double heightRectangle) {
+        this.heightRectangle = heightRectangle;
+    }
+
+    @Override
+    public Double getArea() {
+        return getLengthRectangle() * getHeightRectangle();
+    }
+
+    @Override
+    public Double getPerimeter() {
+        return getLengthRectangle() * getHeightRectangle() * 2.0;
+    }
+
+    @Override
+    public String getType() {
+        return this.getClass().getSimpleName();
     }
 
     @Override
@@ -45,11 +60,11 @@ public class Rectangle extends Shape implements Figure{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Rectangle rectangle = (Rectangle) o;
-        return Objects.equals(length, rectangle.length) && Objects.equals(height, rectangle.height);
+        return Objects.equals(lengthRectangle, rectangle.lengthRectangle) && Objects.equals(heightRectangle, rectangle.heightRectangle);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), length, height);
+        return Objects.hash(super.hashCode(), lengthRectangle, heightRectangle);
     }
 }

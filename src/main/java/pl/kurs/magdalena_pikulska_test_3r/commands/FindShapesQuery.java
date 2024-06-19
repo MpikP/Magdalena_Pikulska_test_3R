@@ -4,12 +4,10 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Positive;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import pl.kurs.magdalena_pikulska_test_3r.validators.ParametersToFind;
 import pl.kurs.magdalena_pikulska_test_3r.validators.ShapeTypeToFind;
 
 import java.time.LocalDate;
 
-@ParametersToFind
 public class FindShapesQuery {
     @ShapeTypeToFind
     private String type;
@@ -22,29 +20,29 @@ public class FindShapesQuery {
     @Positive
     private Double lengthTo;
     @Positive
-    private  Double heightFrom;
+    private Double heightFrom;
     @Positive
-    private  Double heightTo;
+    private Double heightTo;
     @Positive
-    private  Double lengthBaseFrom;
+    private Double lengthBaseFrom;
     @Positive
-    private  Double lengthBaseTo;
+    private Double lengthBaseTo;
     @Positive
-    private  Double lengthAFrom;
+    private Double lengthAFrom;
     @Positive
-    private  Double lengthATo;
+    private Double lengthATo;
     @Positive
-    private  Double lengthBFrom;
+    private Double lengthBFrom;
     @Positive
-    private  Double lengthBTo;
+    private Double lengthBTo;
     @Positive
-    private  Double areaFrom;
+    private Double areaFrom;
     @Positive
-    private  Double areaTo;
+    private Double areaTo;
     @Positive
-    private  Double perimeterFrom;
+    private Double perimeterFrom;
     @Positive
-    private  Double perimeterTo;
+    private Double perimeterTo;
     private LocalDate createdFrom;
     private LocalDate createdTo;
 
@@ -52,7 +50,6 @@ public class FindShapesQuery {
     private int page;
     @Positive
     private int size;
-
 
 
     public FindShapesQuery() {
@@ -230,7 +227,7 @@ public class FindShapesQuery {
         return PageRequest.of(page, size);
     }
 
-    public void setPageable(Pageable pageable){
+    public void setPageable(Pageable pageable) {
         setPage(pageable.getPageNumber());
         setSize(pageable.getPageSize());
     }

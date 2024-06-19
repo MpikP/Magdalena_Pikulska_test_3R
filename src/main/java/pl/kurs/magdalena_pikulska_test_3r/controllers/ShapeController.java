@@ -27,23 +27,14 @@ import java.util.List;
 public class ShapeController {
     private ModelMapper mapper;
     private DynamicManagementService dynamicManagementService;
-
-    private List<String> shapeTypesList;
-    @Value("${shapeType}")
-    private String shapeTypesString;
+    private ShapeQueryService shapeQueryService;
 
 
-    public ShapeController(ModelMapper mapper, DynamicManagementService dynamicManagementService) {
+    public ShapeController(ModelMapper mapper, DynamicManagementService dynamicManagementService, ShapeQueryService shapeQueryService) {
         this.mapper = mapper;
         this.dynamicManagementService = dynamicManagementService;
+        this.shapeQueryService = shapeQueryService;
 
-    }
-
-
-
-    @PostConstruct
-    private void init() {
-        this.shapeTypesList = Arrays.asList(this.shapeTypesString.split(", "));
     }
 
 
@@ -60,12 +51,12 @@ public class ShapeController {
 
 
     @GetMapping
-    public ResponseEntity<Page<ShapeDto>> getFiguresByTypeAndParams(@Validated  @ModelAttribute FindShapesQuery findShapesQuery) {
-        PageImpl<Figure> figureByCriteria = dynamicManagementService.getFigureByCriteria(findShapesQuery);
+    public ResponseEntity<Page<ShapeDto>> getFiguresByTypeAndParams(@Validated @ModelAttribute FindShapesQuery findShapesQuery) {
+        Page<Shape> figureByCriteria = shapeQueryService.getFigureByCriteria(findShapesQuery);
 
 
         Page<ShapeDto> pageShapeDto = figureByCriteria.map(
-                f -> convertShapeToShapeDto((Shape) f)
+                f -> convertShapeToShapeDto(f)
         );
 
         return ResponseEntity.ok()
@@ -76,26 +67,23 @@ public class ShapeController {
     }
 
 
-
-
-
-    private Shape convertCommandToShape(CreateShapeCommand command){
+    private Shape convertCommandToShape(CreateShapeCommand command) {
 
         String type = command.getType();
-        if(type.equalsIgnoreCase("circle")){
+        if (type.equalsIgnoreCase("circle")) {
             return mapper.map(command, Circle.class);
-        } else if(type.equalsIgnoreCase("rectangle")){
+        } else if (type.equalsIgnoreCase("rectangle")) {
             return mapper.map(command, Rectangle.class);
-        } else if(type.equalsIgnoreCase("square")){
+        } else if (type.equalsIgnoreCase("square")) {
             return mapper.map(command, Square.class);
-        } else if(type.equalsIgnoreCase("triangle")){
+        } else if (type.equalsIgnoreCase("triangle")) {
             return mapper.map(command, Triangle.class);
         } else {
             throw new IllegalArgumentException("Unknown shape type: " + type);
         }
     }
 
-    private ShapeDto convertShapeToShapeDto(Shape shape){
+    private ShapeDto convertShapeToShapeDto(Shape shape) {
 
         if (shape == null) {
             throw new IllegalArgumentException("Shape cannot be null");
@@ -103,23 +91,20 @@ public class ShapeController {
 
         String type = shape.getClass().getSimpleName();
         ShapeDto shapeDto;
-        if(type.equalsIgnoreCase("circle")){
+        if (type.equalsIgnoreCase("circle")) {
             shapeDto = mapper.map(shape, CircleDto.class);
-        } else if(type.equalsIgnoreCase("rectangle")){
+        } else if (type.equalsIgnoreCase("rectangle")) {
             shapeDto = mapper.map(shape, RectangleDto.class);
-        } else if(type.equalsIgnoreCase("square")){
+        } else if (type.equalsIgnoreCase("square")) {
             shapeDto = mapper.map(shape, SquareDto.class);
-        } else if(type.equalsIgnoreCase("triangle")){
+        } else if (type.equalsIgnoreCase("triangle")) {
             shapeDto = mapper.map(shape, TriangleDto.class);
         } else {
             throw new IllegalArgumentException("Unknown shape type: " + type);
         }
-        shapeDto.setArea(dynamicManagementService.getArea(shape));
-        shapeDto.setPerimeter(dynamicManagementService.getPerimeter(shape));
 
-        return  shapeDto;
+        return shapeDto;
     }
-
 
 
 }

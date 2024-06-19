@@ -9,7 +9,7 @@ import pl.kurs.magdalena_pikulska_test_3r.commands.FindShapesQuery;
 import java.util.Arrays;
 import java.util.List;
 
-public class ShapeTypeToFindValidator  implements ConstraintValidator<ShapeTypeToFind, String> {
+public class ShapeTypeToFindValidator implements ConstraintValidator<ShapeTypeToFind, String> {
     private List<String> shapeTypesList;
     @Value("${shapeType}")
     private String shapeTypesString;

@@ -1,4 +1,5 @@
 package pl.kurs.magdalena_pikulska_test_3r.commands;
+
 import jakarta.validation.constraints.Positive;
 import pl.kurs.magdalena_pikulska_test_3r.validators.ParametersToCreate;
 import pl.kurs.magdalena_pikulska_test_3r.validators.ShapeType;
@@ -13,7 +14,6 @@ import pl.kurs.magdalena_pikulska_test_3r.validators.ShapeTypeToFind;
 public class CreateShapeCommand {
 
     @JsonProperty("type")
-    @ShapeTypeToFind
     @NotBlank
     @NotEmpty
     private String type;

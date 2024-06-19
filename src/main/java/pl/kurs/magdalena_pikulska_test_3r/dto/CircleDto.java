@@ -1,7 +1,7 @@
 package pl.kurs.magdalena_pikulska_test_3r.dto;
 
 
-public class CircleDto  extends ShapeDto {
+public class CircleDto extends ShapeDto {
     private Double radius;
 
     public CircleDto() {

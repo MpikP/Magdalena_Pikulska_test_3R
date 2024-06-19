@@ -7,7 +7,8 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.Objects;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Shape implements Serializable, Identificationable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +37,7 @@ public abstract class Shape implements Serializable, Identificationable {
         this.createdTime = createdTime;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -48,4 +50,10 @@ public abstract class Shape implements Serializable, Identificationable {
     public int hashCode() {
         return Objects.hash(id, createdTime);
     }
+
+    public abstract Double getArea();
+
+    public abstract Double getPerimeter();
+
+    public abstract String getType();
 }

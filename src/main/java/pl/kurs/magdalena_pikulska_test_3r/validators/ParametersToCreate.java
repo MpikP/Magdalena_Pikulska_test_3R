@@ -12,7 +12,7 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ParametersToCreate {
-    String message() default "Field: Parameters / message: Invalid parameters.";
+    String message() default "Field: Parameters to create shape / message: Invalid parameters.";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

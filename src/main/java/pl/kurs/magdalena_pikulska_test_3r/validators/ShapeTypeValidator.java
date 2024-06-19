@@ -29,6 +29,5 @@ public class ShapeTypeValidator implements ConstraintValidator<ShapeType, Create
         return shapeTypesList.contains(command.getType().toLowerCase());
 
 
-
     }
 }

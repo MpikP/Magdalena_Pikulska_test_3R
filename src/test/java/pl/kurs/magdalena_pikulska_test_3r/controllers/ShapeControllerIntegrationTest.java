@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
@@ -15,6 +16,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import pl.kurs.magdalena_pikulska_test_3r.models.*;
 import pl.kurs.magdalena_pikulska_test_3r.services.DynamicManagementService;
+import pl.kurs.magdalena_pikulska_test_3r.services.ShapeQueryService;
 
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -43,6 +45,8 @@ class ShapeControllerIntegrationTest {
 
     @MockBean
     private DynamicManagementService dynamicManagementService;
+    @MockBean
+    private ShapeQueryService shapeQueryService;
 
     private List<Circle> circleList;
     private List<Square> squareList;
@@ -152,8 +156,8 @@ class ShapeControllerIntegrationTest {
         int page = 0;
         int size = 10;
 
-        PageImpl<Figure> pageImpl = (PageImpl<Figure>) (PageImpl<?>) new PageImpl<>(circleList);
-        when(dynamicManagementService.getFigureByCriteria(any())).thenReturn(pageImpl);
+        Page<Shape> pageShapes = (Page<Shape>) (Page<?>) new PageImpl<>(circleList);
+        when(shapeQueryService.getFigureByCriteria(any())).thenReturn(pageShapes);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/shapes")
                         .param("type", type)
@@ -177,8 +181,8 @@ class ShapeControllerIntegrationTest {
         int page = 0;
         int size = 10;
 
-        PageImpl<Figure> pageImpl = (PageImpl<Figure>) (PageImpl<?>) new PageImpl<>(squareList);
-        when(dynamicManagementService.getFigureByCriteria(any())).thenReturn(pageImpl);
+        Page<Shape> pageShapes = (Page<Shape>) (Page<?>) new PageImpl<>(squareList);
+        when(shapeQueryService.getFigureByCriteria(any())).thenReturn(pageShapes);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/shapes")
                         .param("type", type)
@@ -201,8 +205,8 @@ class ShapeControllerIntegrationTest {
         int page = 0;
         int size = 10;
 
-        PageImpl<Figure> pageImpl = (PageImpl<Figure>) (PageImpl<?>) new PageImpl<>(rectangleList);
-        when(dynamicManagementService.getFigureByCriteria(any())).thenReturn(pageImpl);
+        Page<Shape> pageShapes = (Page<Shape>) (Page<?>) new PageImpl<>(rectangleList);
+        when(shapeQueryService.getFigureByCriteria(any())).thenReturn(pageShapes);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/shapes")
                         .param("type", type)
@@ -218,24 +222,23 @@ class ShapeControllerIntegrationTest {
     }
 
     @Test
-    void shouldNotGetFiguresByTypeTriangleAndRadiusTo2() throws Exception {
+    void shouldGetFiguresByTypeTriangleAndRadiusFrom2() throws Exception {
         String type = "Triangle";
-        Double radiusTo = 2.0;
+        Double radiusFrom = 2.0;
         int page = 0;
         int size = 10;
 
-        PageImpl<Figure> pageImpl = (PageImpl<Figure>) (PageImpl<?>) new PageImpl<>(triangleList);
-        when(dynamicManagementService.getFigureByCriteria(any())).thenReturn(pageImpl);
+        Page<Shape> pageShapes = (Page<Shape>) (Page<?>) new PageImpl<>(triangleList);
+        when(shapeQueryService.getFigureByCriteria(any())).thenReturn(pageShapes);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/shapes")
                         .param("type", type)
-                        .param("radiusTo", String.valueOf(radiusTo))
+                        .param("radiusTo", String.valueOf(radiusFrom))
                         .param("page", String.valueOf(page))
                         .param("size", String.valueOf(size))
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
-
 
 
 }

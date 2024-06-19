@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name ="triangles")
-public class Triangle extends Shape implements Figure{
+@Table(name = "triangles")
+public class Triangle extends Shape {
     private static final long serialVersionUID = 1L;
 
 
@@ -15,7 +15,7 @@ public class Triangle extends Shape implements Figure{
     private Double lengthA;
     private Double lengthB;
     @Column(nullable = false)
-    private Double height;
+    private Double heightTriangle;
 
     public Triangle() {
     }
@@ -24,7 +24,7 @@ public class Triangle extends Shape implements Figure{
         this.lengthBase = lengthBase;
         this.lengthA = lengthA;
         this.lengthB = lengthB;
-        this.height = height;
+        this.heightTriangle = height;
     }
 
     public Double getLengthBase() {
@@ -51,12 +51,28 @@ public class Triangle extends Shape implements Figure{
         this.lengthB = lengthB;
     }
 
-    public Double getHeight() {
-        return height;
+    public Double getHeightTriangle() {
+        return heightTriangle;
     }
 
-    public void setHeight(Double height) {
-        this.height = height;
+    public void setHeightTriangle(Double heightTriangle) {
+        this.heightTriangle = heightTriangle;
+    }
+
+
+    @Override
+    public Double getArea() {
+        return (getLengthBase() * getHeightTriangle()) / 3;
+    }
+
+    @Override
+    public Double getPerimeter() {
+        return getLengthBase() + getLengthB() + getLengthA();
+    }
+
+    @Override
+    public String getType() {
+        return this.getClass().getSimpleName();
     }
 
     @Override
@@ -65,12 +81,12 @@ public class Triangle extends Shape implements Figure{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Triangle triangle = (Triangle) o;
-        return Objects.equals(lengthBase, triangle.lengthBase) && Objects.equals(lengthA, triangle.lengthA) && Objects.equals(lengthB, triangle.lengthB) && Objects.equals(height, triangle.height);
+        return Objects.equals(lengthBase, triangle.lengthBase) && Objects.equals(lengthA, triangle.lengthA) && Objects.equals(lengthB, triangle.lengthB) && Objects.equals(heightTriangle, triangle.heightTriangle);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), lengthBase, lengthA, lengthB, height);
+        return Objects.hash(super.hashCode(), lengthBase, lengthA, lengthB, heightTriangle);
     }
 
 

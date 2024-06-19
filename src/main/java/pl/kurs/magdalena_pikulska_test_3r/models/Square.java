@@ -6,26 +6,41 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "squares")
-public class Square extends Shape implements Figure{
+public class Square extends Shape {
     private static final long serialVersionUID = 1L;
 
     @Column(nullable = false)
-    private Double length;
+    private Double lengthSquare;
 
 
     public Square() {
     }
 
     public Square(Double length) {
-        this.length = length;
+        this.lengthSquare = length;
     }
 
-    public Double getLength() {
-        return length;
+    public Double getLengthSquare() {
+        return lengthSquare;
     }
 
-    public void setLength(Double length) {
-        this.length = length;
+    public void setLengthSquare(Double lengthSquare) {
+        this.lengthSquare = lengthSquare;
+    }
+
+    @Override
+    public Double getArea() {
+        return getLengthSquare() * getLengthSquare();
+    }
+
+    @Override
+    public Double getPerimeter() {
+        return 4.0 * getLengthSquare();
+    }
+
+    @Override
+    public String getType() {
+        return this.getClass().getSimpleName();
     }
 
     @Override
@@ -34,11 +49,11 @@ public class Square extends Shape implements Figure{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Square square = (Square) o;
-        return Objects.equals(length, square.length);
+        return Objects.equals(lengthSquare, square.lengthSquare);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), length);
+        return Objects.hash(super.hashCode(), lengthSquare);
     }
 }

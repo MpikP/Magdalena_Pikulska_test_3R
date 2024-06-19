@@ -1,12 +1,13 @@
 package pl.kurs.magdalena_pikulska_test_3r.models;
 
 import jakarta.persistence.*;
+import pl.kurs.magdalena_pikulska_test_3r.services.FigureService;
 
 import java.util.Objects;
 
 @Entity
 @Table(name = "circles")
-public class Circle extends Shape implements Figure{
+public class Circle extends Shape {
     private static final long serialVersionUID = 1L;
 
 
@@ -23,7 +24,6 @@ public class Circle extends Shape implements Figure{
     }
 
 
-
     public Double getRadius() {
         return radius;
     }
@@ -32,6 +32,21 @@ public class Circle extends Shape implements Figure{
         this.radius = radius;
     }
 
+
+    @Override
+    public Double getArea() {
+        return getRadius() * getRadius() * Math.PI;
+    }
+
+    @Override
+    public Double getPerimeter() {
+        return 2.0 * getRadius() * Math.PI;
+    }
+
+    @Override
+    public String getType() {
+        return this.getClass().getSimpleName();
+    }
 
     @Override
     public boolean equals(Object o) {

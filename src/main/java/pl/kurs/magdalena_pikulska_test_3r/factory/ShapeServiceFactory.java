@@ -13,7 +13,7 @@ public class ShapeServiceFactory {
         this.ctx = ctx;
     }
 
-    public <T> FigureService<T> getService(Class<? extends Shape> figureClass){
+    public <T> FigureService<T> getService(Class<? extends Shape> figureClass) {
         if (Circle.class.equals(figureClass)) {
             return (FigureService<T>) ctx.getBean(CircleService.class);
         } else if (Rectangle.class.equals(figureClass)) {
